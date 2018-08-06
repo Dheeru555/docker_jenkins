@@ -34,7 +34,7 @@ node() {
 
                    stage('build app') { 
                        
-                 sh "sudo usermod -aG docker "sdevineni""      
+                  //sh "sudo usermod -aG docker ${userName}       
                  sh "docker-compose -f docker-build.yml build" 
                  
              } 
