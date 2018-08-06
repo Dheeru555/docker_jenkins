@@ -11,7 +11,8 @@ node() {
 
 
 // echo "Running ${env.BUILD_ID} - ${env.JOB_NAME} on ${env.JENKINS_URL}" 
-     def userName = splitJobName[0]  
+     def userName = splitJobName[0]
+     def USER = "sdevineni"
      def repoName = "docker_jenkins"
      def branchName = "master"
      def orgName = "Dheeru555" 
@@ -35,6 +36,7 @@ node() {
                    stage('build app') { 
                        
                   //sh "sudo usermod -aG docker ${userName}       
+                 sudo chown $USER:$USER /usr/local/bin/docker-compose
                  sh "docker-compose -f docker-build.yml build" 
                  
              } 
