@@ -12,7 +12,7 @@ node('buildhost') {
 
 // echo "Running ${env.BUILD_ID} - ${env.JOB_NAME} on ${env.JENKINS_URL}" 
      def userName = splitJobName[0]  
-     def repoName = "docker_jenkins
+     def repoName = "docker_jenkins"
      def branchName = "master"
      def orgName = "Dheeru555" 
  
