@@ -5,7 +5,7 @@
 
 
 // master 
-node('buildhost') { 
+node() { 
     def jobName = "${env.JOB_NAME}" 
     splitJobName = jobName.tokenize('.') 
 
