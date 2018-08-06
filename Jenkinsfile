@@ -60,7 +60,7 @@ node() {
 
              stage('stack deploy') { 
                  
-                             sh "docker run -p 7090:80 dheeru/randomizer" 
+                             sh "docker run -p 7090:80 -v /var/run/docker.sock:/var/run/docker.sock dheeru/randomizer" 
                          } 
     
      } 
