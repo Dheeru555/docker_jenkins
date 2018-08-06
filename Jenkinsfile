@@ -21,6 +21,15 @@ node() {
      def userSSH = "${userName}_ssh" 
      def userNameStackDeploy = "dev_deploy_stack" 
 
+    
+    
+    
+     stage('git') { 
+             echo branchName 
+             git credentialsId: "dheer_cred", 
+                 url: "${gitRepoURL}", 
+                 branch: "${branchName}" 
+         } 
  
 
                    stage('build app') { 
