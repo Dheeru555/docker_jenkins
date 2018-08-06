@@ -36,8 +36,8 @@ node() {
                    stage('build app') { 
                        
                   //sh "sudo usermod -aG docker ${userName}       
-                 sudo chown $USER:$USER /usr/local/bin/docker-compose
-                 sh "docker-compose -f docker-build.yml build" 
+                 //sudo chown $USER:$USER /usr/local/bin/docker-compose
+                 sh "docker build -t dheeru/randomizer . -f Dockerfile_rand" 
                  
              } 
  
@@ -50,7 +50,7 @@ node() {
              stage('push image') { 
                  withCredentials([string(credentialsId: "${userName}_pass", variable: 'MY_PASSWORD')]) { 
                      sh "docker login -u \"${userName}\" -p \"$MY_PASSWORD\"" 
-                     sh "docker-compose -f docker-build.yml push" 
+                     sh "docker push dheeru/randomizer" 
                      sh "docker logout" 
                  } 
              } 
@@ -60,7 +60,7 @@ node() {
 
              stage('stack deploy') { 
                  
-                             sh "docker stack deploy -c docker-compose.yml random" 
+                             sh "docker run -p 7090:80 dheeru/randomizer" 
                          } 
     
      } 
