@@ -17,7 +17,7 @@ node() {
      def orgName = "Dheeru555" 
  
 
-     def gitRepoURL = "git@github.com:${orgName}/${repoName}.git" 
+     def gitRepoURL = "https://github.com/Dheeru555/docker_jenkins.git" 
      def userSSH = "${userName}_ssh" 
      def userNameStackDeploy = "dev_deploy_stack" 
 
