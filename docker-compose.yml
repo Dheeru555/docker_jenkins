@@ -1,0 +1,16 @@
+version: "3.5"
+services:
+  randomizer:
+    image: dheeru/randomizer:latest
+    deploy:
+      replicas: 2 
+    entrypoint: python app.py
+    ports:
+      - "5055:80"
+  example:
+    image: dheeru/randomizer:latest
+    deploy:
+      replicas: 2
+    entrypoint: python app1.py  
+    ports:
+      - "5065:80"    
