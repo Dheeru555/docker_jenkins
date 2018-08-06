@@ -23,19 +23,7 @@ node() {
 
  
 
-     try { 
-         stage('git') { 
-             echo branchName 
-             git credentialsId: "${userSSH}", 
-                 url: "${gitRepoURL}", 
-                 branch: "${branchName}" 
-         } 
- 
-
- 
-
-          
-             stage('build app') { 
+                   stage('build app') { 
                  sh "docker-compose -f docker-build.yml build" 
                  
              } 
@@ -63,9 +51,4 @@ node() {
                          } 
     
      } 
-     catch (exception) { 
-         currentBuild.result = 'FAILED' 
-         failure("${userName}") 
-         throw exception 
-     } 
- }  
+    
