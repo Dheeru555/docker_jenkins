@@ -38,7 +38,8 @@ node() {
                        
                   //sh "sudo usermod -aG docker ${userName}       
                  //sudo chown $USER:$USER /usr/local/bin/docker-compose
-                 sh "docker build -t dheeru/randomizer . -f Dockerfile_rand" 
+                 //sh "docker build -t dheeru/randomizer . -f Dockerfile_rand" 
+                       sh "docker-compose -f docker-build.yml build"
                  
              } 
  
