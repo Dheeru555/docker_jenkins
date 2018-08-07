@@ -76,6 +76,7 @@ node() {
             {
                 cnt += 1
             }
+            build = build.previousBuild
         }
         
         echo cnt
