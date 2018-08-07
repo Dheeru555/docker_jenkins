@@ -1,16 +1,16 @@
 version: "3"
 services:
   randomizer:
-    image: dheeru/randomizer:latest
+    image: dheeru/randomizer:v_${TAG}
     deploy:
       replicas: 2 
     entrypoint: python app.py
     ports:
-      - "5055:80"
+      - "5056:80"
   example:
-    image: dheeru/randomizer:latest
+    image: dheeru/randomizer:v_${TAG}
     deploy:
       replicas: 2
     entrypoint: python app1.py  
     ports:
-      - "5065:80"    
+      - "5067:80"    
