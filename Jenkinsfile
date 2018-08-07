@@ -11,7 +11,8 @@ node() {
 
 
 // echo "Running ${env.BUILD_ID} - ${env.JOB_NAME} on ${env.JENKINS_URL}" 
-     def userName = splitJobName[0]
+     def userNam = splitJobName[0]
+     def userName = "dheeru"
      def USER = "sdevineni"
      def repoName = "docker_jenkins"
      def branchName = "master"
@@ -60,7 +61,7 @@ node() {
 
              stage('stack deploy') { 
                  
-                             sh "docker run -p 7090:80 -v /var/run/docker.sock:/var/run/docker.sock dheeru/randomizer" 
+                             sh "docker run -p 7090:80 dheeru/randomizer" 
                          } 
     
      } 
