@@ -83,8 +83,8 @@ node() {
 
              stage('stack deploy') { 
                  
-                 sh "export TAG=${cnt}"            
-                 sh "docker stack deploy -c docker-compose.yml rand"
+                 //sh "export TAG=${cnt}"            
+                 sh "TAG=${cnt} docker stack deploy -c docker-compose.yml rand"
                          } 
     
    
