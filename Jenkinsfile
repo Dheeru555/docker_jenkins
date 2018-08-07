@@ -47,6 +47,10 @@ node() {
             build = build.previousBuild
         }
         
+        if( cnt == 0)
+        {
+            cnt = 1
+        }
         print cnt
             
     }
