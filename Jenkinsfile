@@ -17,6 +17,7 @@ node() {
      def repoName = "docker_jenkins"
      def branchName = "master"
      def orgName = "Dheeru555" 
+     def cnt = 0
  
 
      def gitRepoURL = "https://github.com/Dheeru555/docker_jenkins.git" 
@@ -32,44 +33,11 @@ node() {
                  url: "${gitRepoURL}", 
                  branch: "${branchName}" 
          } 
- 
-
-                   stage('build app') { 
-                       
-                  //sh "sudo usermod -aG docker ${userName}       
-                 //sudo chown $USER:$USER /usr/local/bin/docker-compose
-                 //sh "docker build -t dheeru/randomizer . -f Dockerfile_rand" 
-                       sh "docker-compose -f docker-build.yml build"
-                 
-             } 
- 
-
- 
-
-              
- 
-
-             stage('push image') { 
-                 withCredentials([string(credentialsId: "${userName}_pass", variable: 'MY_PASSWORD')]) { 
-                     sh "docker login -u \"${userName}\" -p \"$MY_PASSWORD\"" 
-                     //sh "docker push dheeru/randomizer" 
-                     sh "docker-compose -f docker-build.yml push"
-                     sh "docker logout" 
-                 } 
-             } 
- 
-
- 
-
-          //   stage('stack deploy') { 
-                 
-              //               sh "docker stack deploy -c docker-compose.yml rand"
-                //         } 
     
-            stage('Successful build counts')
+    
+              stage('Successful build counts')
     {
         build = currentBuild
-        cnt = 0
         while (build !=  null)
         {
             if( build.result == 'SUCCESS')
@@ -82,6 +50,43 @@ node() {
         print cnt
             
     }
+ 
+
+                   stage('build app') { 
+                    def TAG = cnt   
+                  //sh "sudo usermod -aG docker ${userName}       
+                 //sudo chown $USER:$USER /usr/local/bin/docker-compose
+                 sh "docker build -t dheeru/randomizer:v_${TAG} . -f Dockerfile_rand" 
+                  //     sh "docker-compose -f docker-build.yml build"
+                 
+             } 
+ 
+
+ 
+
+              
+ 
+
+             stage('push image') { 
+                 withCredentials([string(credentialsId: "${userName}_pass", variable: 'MY_PASSWORD')]) { 
+                     
+                     def TAG = cnt
+                     sh "docker login -u \"${userName}\" -p \"$MY_PASSWORD\"" 
+                     sh "docker push dheeru/randomizer:v_${TAG}" 
+                    // sh "docker-compose -f docker-build.yml push"
+                     sh "docker logout" 
+                 } 
+             } 
+ 
+
+ 
+
+             stage('stack deploy') { 
+                 
+                             sh "TAG=cnt docker stack deploy -c docker-compose.yml rand"
+                         } 
+    
+   
     
      } 
     
