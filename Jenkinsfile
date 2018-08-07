@@ -61,10 +61,26 @@ node() {
 
  
 
-             stage('stack deploy') { 
+          //   stage('stack deploy') { 
                  
-                             sh "docker stack deploy -c docker-compose.yml rand"
-                         } 
+              //               sh "docker stack deploy -c docker-compose.yml rand"
+                //         } 
+    
+            stage('Successful build counts')
+    {
+        build = currentBuild
+        cnt = 0
+        while (build !=  null)
+        {
+            if( build.result == 'SUCCESS')
+            {
+                cnt += 1
+            }
+        }
+        
+        echo cnt
+            
+    }
     
      } 
     
