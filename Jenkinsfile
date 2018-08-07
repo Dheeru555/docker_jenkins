@@ -52,7 +52,8 @@ node() {
              stage('push image') { 
                  withCredentials([string(credentialsId: "${userName}_pass", variable: 'MY_PASSWORD')]) { 
                      sh "docker login -u \"${userName}\" -p \"$MY_PASSWORD\"" 
-                     sh "docker push dheeru/randomizer" 
+                     //sh "docker push dheeru/randomizer" 
+                     sh "docker-compose -f docker-build.yml push"
                      sh "docker logout" 
                  } 
              } 
@@ -62,7 +63,7 @@ node() {
 
              stage('stack deploy') { 
                  
-                             sh "docker run -p 7090:80 dheeru/randomizer" 
+                             sh "docker stack deploy -c docker-compose.yml rand"
                          } 
     
      } 
