@@ -79,7 +79,7 @@ node() {
             build = build.previousBuild
         }
         
-        echo cnt
+        print cnt
             
     }
     
