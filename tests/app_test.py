@@ -20,7 +20,7 @@ import json
      url_formatted = '{0}{1}'.format(url, '/check1') 
      r = requests.get(url_formatted)
      data = r.json()
-     assert 25 == data['EMP_Details'][0]['age']
+     assert 205 == data['EMP_Details'][0]['age']
 
  
 
