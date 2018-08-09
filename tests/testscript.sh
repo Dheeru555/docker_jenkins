@@ -2,7 +2,6 @@
 # define some colors to use for output 
 set -x  
 
-
 RED='\033[0;31m' 
 GREEN='\033[0;32m' 
 NC='\033[0m' 
@@ -10,16 +9,8 @@ NC='\033[0m'
 
 # kill and remove any running containers 
  cleanup () { 
-   # docker-compose -f docker/docker-compose.yml -p ci kill 
-   # docker-compose -H tcp://ktydkrucp.eogresources.com:443 --tlsverify --tlscacert ca.pem --tlscert cert.pem --tlskey key.pem -f docker/docker-compose.yml -p ci rm -f 
    docker-compose -f docker/docker-compose.yml -p ci rm -f 
  } 
- 
-
- # catch unexpected failures, do cleanup and output an error message 
- trap 'cleanup ; printf "${RED}Tests Failed For Unexpected Reasons${NC}\n"'\ 
-   HUP INT QUIT PIPE TERM 
- 
 
  # build and run the composed services 
  TAG=$1 docker-compose -f docker/docker-compose.yml -p ci build && TAG=$1 docker-compose -f docker/docker-compose.yml -p ci up -d 
