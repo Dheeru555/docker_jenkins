@@ -67,10 +67,6 @@ node() {
  
 
  
-
-              
- 
-
              stage('push image') { 
                  withCredentials([string(credentialsId: "${userName}_pass", variable: 'MY_PASSWORD')]) { 
                      
@@ -83,13 +79,18 @@ node() {
              } 
  
 
- 
-
              stage('stack deploy') { 
                  
                  //sh "export TAG=${cnt}"            
                  sh "TAG=${cnt} docker stack deploy -c docker-compose.yml rand"
                          } 
+    
+             dir('tests') { 
+                 stage('test') { 
+                     sh "bash test.sh ${cnt}" 
+                 } 
+             } 
+
     
    
     
