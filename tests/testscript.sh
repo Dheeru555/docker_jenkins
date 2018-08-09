@@ -21,19 +21,19 @@ NC='\033[0m'
  
 
  # wait for the test service to complete and grab the exit code 
- #TEST_EXIT_CODE=`docker wait ci_ialertsmemsql_test_1` 
+ TEST_EXIT_CODE=`docker wait ci_random_test_1` 
  
 
  # output the logs for the test (for clarity) 
- #docker logs ci_ialertsmemsql_test_1 
+ docker logs ci_random_test_1 
  
 
  # inspect the output of the test and display respective message 
- #if [ -z ${TEST_EXIT_CODE+x} ] || [ "$TEST_EXIT_CODE" -ne 0 ] ; then 
- #  printf "${RED}Tests Failed${NC} - Exit Code: $TEST_EXIT_CODE\n" 
- #else 
+ if [ -z ${TEST_EXIT_CODE+x} ] || [ "$TEST_EXIT_CODE" -ne 0 ] ; then 
+   printf "${RED}Tests Failed${NC} - Exit Code: $TEST_EXIT_CODE\n" 
+ else 
    printf "${GREEN}Tests Passed${NC}\n" 
- #fi 
+ fi 
  
 
  # call the cleanup fuction 
@@ -41,4 +41,4 @@ NC='\033[0m'
  
 
  # exit the script with the same code as the test service code 
- #exit $TEST_EXIT_CODE 
+ exit $TEST_EXIT_CODE 
