@@ -1,0 +1,9 @@
+version: "3.0" 
+ 
+
+ services: 
+   random_test: 
+     build: . 
+     image: dheeru/randomizer:test_v${TAG} 
+     logging: 
+       driver: json-file 
