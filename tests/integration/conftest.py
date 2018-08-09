@@ -2,11 +2,11 @@ import pytest
 
 
 def pytest_addoption(parser): 
-    parser.addoption("--url", 
-                     default='http://opsitcdkr01:5067/emp', 
+    parser.addoption("--urlreq", 
+                     default='http://opsitcdkr01:5067/', 
                      help="Specify URL where the APIs are hosted") 
 
 
 @pytest.fixture 
 def url(request): 
-     return request.config.getoption('--url')
+     return request.config.getoption('--urlreq')
