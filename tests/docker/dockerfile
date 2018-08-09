@@ -1,0 +1,10 @@
+FROM python:2.7-slim
+MAINTAINER Sai Dheeraj Devineni 
+
+
+WORKDIR /app/tests 
+COPY requirements.txt /app/tests/requirements.txt 
+RUN pip3.6 install -r requirements.txt 
+
+
+ENTRYPOINT ["pytest"]
