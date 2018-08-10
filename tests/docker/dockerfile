@@ -1,10 +1,9 @@
-FROM python:2.7-slim
-MAINTAINER Sai Dheeraj Devineni 
+FROM ktydkrdtr.eogresources.com/dev/ms-centosora:latest
+MAINTAINER Sai Dheeraj Devineni
 
+RUN mkdir -p /app/tests
+WORKDIR /app/tests
+COPY . /app/tests/
+RUN pip3.6 install -r requirements.txt
 
-WORKDIR /app/tests 
-COPY requirements.txt /app/tests/requirements.txt 
-RUN pip install -r requirements.txt 
-
-
-ENTRYPOINT ["pytest"]
+CMD ["pytest"]
