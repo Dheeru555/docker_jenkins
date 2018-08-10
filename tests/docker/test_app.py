@@ -14,7 +14,7 @@ def test_emp_age_details():
     url_formatted = '{0}'.format('http://opsitcdkr01:5067/')
     r = requests.get(url_formatted)
     data = r.json()
-    assert 25 == data['EMP_Details'][0]['age']
+    assert 2005 == data['EMP_Details'][0]['age']
     
      
 
