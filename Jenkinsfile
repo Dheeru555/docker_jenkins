@@ -9,7 +9,7 @@ node() {
      def userName = "dheeru"
      def USER = "sdevineni"
      def repoName = "docker_jenkins"
-     def branchName = "master"
+     def branchName = "localhost_branch"
      def orgName = "Dheeru555" 
      def cnt = 0
  
