@@ -2,9 +2,6 @@
 # define some colors to use for output 
 set -x  
 
-RED='\033[0;31m' 
-GREEN='\033[0;32m' 
-NC='\033[0m' 
 
 
 # kill and remove any running containers 
@@ -15,7 +12,7 @@ NC='\033[0m'
  # build and run the composed services 
  TAG=$1 docker-compose -f docker/docker-compose.yml -p ci build && TAG=$1 docker-compose -f docker/docker-compose.yml -p ci up -d 
  if [ $? -ne 0 ] ; then 
-   printf "${RED}Docker Compose Failed${NC}\n" 
+   printf "Docker Compose Failed\n" 
    exit -1 
  fi 
  
@@ -30,9 +27,9 @@ NC='\033[0m'
 
  # inspect the output of the test and display respective message 
  if [ -z ${TEST_EXIT_CODE+x} ] || [ "$TEST_EXIT_CODE" -ne 0 ] ; then 
-   printf "${RED}Tests Failed${NC} - Exit Code: $TEST_EXIT_CODE\n" 
+   printf "Tests Failed - Exit Code: $TEST_EXIT_CODE\n" 
  else 
-   printf "${GREEN}Tests Passed${NC}\n" 
+   printf "Tests Passed\n" 
  fi 
  
 
