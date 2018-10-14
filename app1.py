@@ -28,7 +28,7 @@ def get_Details():
     if not helper:
         helper.append(emp)
         
-    return jsonify({'EMP_Details':helper})
+    return jsonify({'EMP_Details for':helper})
 
 @app.route('/emp/check', methods=['POST'])
 def put_Details():
