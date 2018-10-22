@@ -77,7 +77,7 @@ node() {
     
              dir('tests') { 
                  stage('test') { 
-                     sh "bash testscript.sh ${cnt}" 
+                     sh "bash testscript1.sh ${cnt}" 
                  } 
              } 
 
