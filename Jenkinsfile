@@ -48,9 +48,9 @@ node() {
 
                    stage('build app') { 
                     def TAG = cnt   
-                  sh "sudo usermod -aG docker jenkins"
+                  //sh "sudo usermod -aG docker jenkins"
                   //sh "sudo service jenkins restart"
-                  sh "chmod 777 /var/run/docker.sock"
+                 // sh "chmod 777 /var/run/docker.sock"
                 //sudo chown $USER:$USER /usr/local/bin/docker-compose
                  sh "docker build -t dheeru/randomizer:v_${TAG} . -f Dockerfile_rand" 
                   //     sh "docker-compose -f docker-build.yml build"
